@@ -7,6 +7,10 @@ require "yaml"
 require "ostruct"
 require "enumerator"
 require "fileutils"
+require "open-uri"
+require "rss/1.0"
+require "rss/2.0"
+
 SWAT_APP = File.expand_path(File.dirname(__FILE__)+"/..")
 ["lib","ext"].each { |x| $LOAD_PATH.unshift("#{SWAT_APP}/#{x}"); }
 
@@ -24,3 +28,4 @@ require "swat"
 
 Swat::SwatMain.new
 Gtk.main
+

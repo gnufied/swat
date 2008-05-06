@@ -1,3 +1,6 @@
+# module defines command methods and functions which are required to handle
+# basic things about a list_view
+
 module Swat
   module ListHelper
     def reload_view
@@ -11,6 +14,7 @@ module Swat
       @list_view.rules_hint = false
       @list_view.selection.mode = Gtk::SELECTION_SINGLE
     end
+    
     def add_columns
       model = @list_view.model
       renderer = Gtk::CellRendererText.new
@@ -70,3 +74,4 @@ module Swat
     end
   end
 end
+

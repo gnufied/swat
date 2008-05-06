@@ -9,6 +9,9 @@ module Swat
       @todo_text_entry = @todo_glade.get_widget("todo_text_entry")
       @category_combo = @todo_glade.get_widget("todo_category_entry")
       @priority_combo = @todo_glade.get_widget("priority_combo")
+      @priority_combo.active = 0
+      @agenda_category_combo = @todo_glade.get_widget("agenda_category_combo")
+      @agenda_category_combo.active = 1
       populate_old_categories
       @add_dialog.show_all
     end

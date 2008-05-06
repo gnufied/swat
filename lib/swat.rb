@@ -7,7 +7,7 @@ module Swat
     attr_accessor :config_dir
 
     def initialize
-      @config_dir = File.join(ENV['HOME'] + '/snippets')
+      @config_dir = File.join(ENV['HOME'] + '/.swat')
       create_config_directory
 
       @status_icon = Gtk::StatusIcon.new
@@ -15,9 +15,9 @@ module Swat
       @status_icon.pixbuf = icon_file
 
 
-      TodoWindow.todo_file_location = File.join(ENV['HOME'], '/snippets/todo.org')
-      TodoWindow.wishlist = File.join(ENV['HOME'], '/snippets/wishlist.org')
-      TodoWindow.meta_data_file = File.join(ENV['HOME'], '/snippets/meta_data.yml')
+      TodoWindow.todo_file_location = File.join(ENV['HOME'], '/.swat/todo.org')
+      TodoWindow.wishlist = File.join(ENV['HOME'], '/.swat/wishlist.org')
+      TodoWindow.meta_data_file = File.join(ENV['HOME'], '/.swat/meta_data.yml')
       @todo_window = TodoWindow.new("#{SWAT_APP}/resources/todo_window.glade")
 
       @status_icon.set_tooltip("Your Task List")

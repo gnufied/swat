@@ -7,6 +7,7 @@ module Swat
       parse_file_data if File.exist?(@config_file)
     end
 
+    # will read the relevant todo data file and load the todo list
     def parse_file_data
       current_category = nil
       todo_lines = []
@@ -34,6 +35,7 @@ module Swat
       end
     end
 
+    # will return open_tasks
     def open_tasks
       @todo_container.each do |category,todo_array|
         next if todo_array.empty?
@@ -44,6 +46,7 @@ module Swat
       end
     end
 
+    # will return closed tasks
     def close_tasks
       @todo_container.each do |category,todo_array|
         next if todo_array.empty?
@@ -54,6 +57,7 @@ module Swat
       end
     end
 
+    # will dump the todo data in memory to a file
     def dump
       File.open(@config_file,'w') do |fl|
         @todo_container.each do |category,todo_array|
