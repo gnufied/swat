@@ -1,0 +1,28 @@
+Swat is a todo list manager for Gnome & Emacs.
+
+Heck : Emacs?
+
+Features:
+  - Manage your todos, add them according to priority and category.
+  - Move your todos to wish list, when not feeling like working on them.
+  - libtomboy bindings for global shortcut(Alt-F11).
+  - Nice stats for number of tasks finished and added.
+  - All your todos are in a .org file and hence can be managed from
+    Emacs as well.
+  - System tray integration.
+
+KeyBindings:
+  - Alt-F11 : from anywhere, brings the todo window to front.
+  - Esc : to dismiss todo window.
+  - Control-N : to add a todo.
+  
+Installation :
+  - sudo gem install swat
+
+Code:
+  - http://packet.googlecode.com/svn/branches/swat/
+
+Mailing List and Forums :
+  - Ahem
+
+

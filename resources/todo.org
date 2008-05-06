@@ -1,0 +1,27 @@
+* General Tasks *
+
+** DONE Get BSE symbols in symbol lookup, also have a complete relook on symbol lookup facility.
+** DONE Get a symbol search page up.
+** TODO Install Monit on all US machines for proxy and mongrel.
+** DONE Implement inactivity timeout for push_server
+** TODO Implement single quote on first request from push_server
+** TODO Implement a rate control feature for push_server
+** TODO Implement cummulative volume in push_server.
+*** TODO Implement country indices by default in Watchlist.
+
+* Mobile/WebService Shit *
+** TODO Install exception notification plugin for Web Service
+
+* Data integration tasks *
+** TODO implement BSE symbols everywhere.
+
+
+* Browser Issues 
+** TODO Color change not working in IE.
+
+* Personal Task list
+** TODO Do some erlang exercises
+
+* Webfront tasks *
+** TODO Implement a business analytics tool for charging customers.
+** TODO Implement a stock screener.

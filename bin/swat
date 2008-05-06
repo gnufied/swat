@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require 'libglade2'
+require "erb"
+require "yaml"
+require "ostruct"
+require "enumerator"
+require "fileutils"
+SWAT_APP = File.expand_path(File.dirname(__FILE__)+"/..")
+["lib","ext"].each { |x| $LOAD_PATH.unshift("#{SWAT_APP}/#{x}"); }
+
+require "list_helper"
+require "stat_box"
+require "swat_meta_data"
+require "todo_context_menu"
+require "todo_window"
+require "keybinder"
+require "todo_data"
+require "add_todo_dialog"
+require "wish_list"
+require "completed_view"
+require "swat"
+
+Swat::SwatMain.new
+Gtk.main
