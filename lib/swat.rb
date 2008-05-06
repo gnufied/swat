@@ -5,6 +5,7 @@ module Swat
     attr_accessor :status_icon
     attr_accessor :key_binder
     attr_accessor :config_dir
+
     def initialize
       @config_dir = File.join(ENV['HOME'] + '/snippets')
       create_config_directory
