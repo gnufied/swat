@@ -49,7 +49,6 @@ module Swat
     end # end of connect custom signals method
 
     def add_to_active
-      puts "add to active clicked"
       selection = @list_view.selection
       if iter = selection.selected
         selected_category = iter.parent[0]
@@ -60,7 +59,6 @@ module Swat
         @list_view.model.remove(iter)
       end
     end # end of add_to_active method
-
   end # end of class TracView
 end # end of module Swat
 

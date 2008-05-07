@@ -22,17 +22,11 @@ module Swat
 
     def time_ago date
       day_diff = ((Time.now - date)/(24*3600)).floor
-      return "#{day_diff.floor} days" if day_diff > 1
-      hour_diff = nil
-      min_diff = nil
-      if day_diff < 1
-        hour_diff = ((Time.now - date)/3600).abs
-        return "#{hour_diff.floor} hours" if hour_diff > 1
-      end
-      if hour_diff && hour_diff < 1
-        min_diff = ((Time.now - date)/60).abs
-      end
-      return "#{min_diff.floor} minutes"
+      return "#{day_diff} days" if day_diff > 1
+      hour_diff = ((Time.now - date)/3600).floor
+      return "#{hour_diff} hours" if hour_diff > 1
+      min_diff = ((Time.now - date)/60).floor
+      return "#{min_diff} minutes"
     end
 
     # will read the relevant todo data file and load the todo list
