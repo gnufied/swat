@@ -1,7 +1,7 @@
 module Swat
   class TodoWindow
     include Swat::ListHelper
-    attr_accessor :todo_data,:glade,:todo_window
+    attr_accessor :todo_data,:glade,:todo_window,:todo_notebook
 
     TreeItem = Struct.new('TreeItem',:description, :priority,:category)
     @@todo_file_location = nil
@@ -20,7 +20,8 @@ module Swat
     def on_todo_window_destroy_event; return true; end
 
     def on_add_todo_button_clicked
-      AddTodoDialog.new(@todo_data.categories) do |priority,agenda_category,category,todo|
+      all_categories = (@todo_data.categories + @wish_list_tab.todo_data.categories).uniq
+      AddTodoDialog.new(all_categories) do |priority,agenda_category,category,todo|
         chose_and_add(priority,agenda_category,category,todo)
       end
     end
@@ -28,6 +29,7 @@ module Swat
     def chose_and_add(priority,agenda_category,category,todo)
       if agenda_category == 1
         @wish_list_tab.add_to_wishlist(category,todo,priority)
+        @todo_notebook.page = 1
       else
         add_to_tasklist(priority,category,todo)
       end
@@ -40,6 +42,7 @@ module Swat
       @todo_data.dump
       reload_view
       @stat_vbox.update_today_label(@meta_data)
+      @todo_notebook.page = 0
     end
 
     def on_toggle_stat_button_clicked

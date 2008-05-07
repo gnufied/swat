@@ -67,7 +67,7 @@ module Swat
         selected_category = iter.parent[0]
         task_index = iter[3]
         url = todo_data.get_trac_url(task_index)
-        system("firefox #{url}")
+        Launchy.open(url)
       end
     end
   end # end of class TracView
