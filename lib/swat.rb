@@ -31,7 +31,11 @@ module Swat
     end
 
     def show_task_list
-      @todo_window.show_window
+      if @todo_window.status
+        @todo_window.hide_window
+      else
+        @todo_window.show_window
+      end
     end
 
     # creates configuration files if they don't exist

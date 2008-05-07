@@ -1,7 +1,7 @@
 module Swat
   class TodoWindow
     include Swat::ListHelper
-    attr_accessor :todo_data,:glade,:todo_window,:todo_notebook
+    attr_accessor :todo_data,:glade,:todo_window,:todo_notebook,:status
 
     TreeItem = Struct.new('TreeItem',:description, :priority,:category)
     @@todo_file_location = nil
@@ -104,6 +104,7 @@ module Swat
       layout_done_view
       layout_trac_view
       @list_view.expand_all
+      @status = false
       @todo_window.hide
     end
 
@@ -194,9 +195,13 @@ module Swat
       @todo_window = @glade.get_widget("todo_window")
       @todo_window.present
       @todo_window.show
+      @status = true
     end
 
-    def hide_window; @todo_window.hide; end
+    def hide_window;
+      @todo_window.hide
+      @status = false
+    end
 
     def on_sync_button_clicked
       system("svn up #{@@todo_file_location}")
