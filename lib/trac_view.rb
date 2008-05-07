@@ -39,6 +39,7 @@ module Swat
     def connect_custom_signals
       @trac_view_context_menu = TodoContextMenu.new
       @trac_view_context_menu.append(" Add to Today\'s Agenda ") { add_to_active }
+      @trac_view_context_menu.append(" Open in Browser ") { open_in_browser }
       @trac_view_context_menu.show
       @list_view.signal_connect("button_press_event") do |widget,event|
         if event.kind_of? Gdk::EventButton and event.button == 3
@@ -59,6 +60,16 @@ module Swat
         @list_view.model.remove(iter)
       end
     end # end of add_to_active method
+
+    def open_in_browser
+      selection = @list_view.selection
+      if iter = selection.selected
+        selected_category = iter.parent[0]
+        task_index = iter[3]
+        url = todo_data.get_trac_url(task_index)
+        system("firefox #{url}")
+      end
+    end
   end # end of class TracView
 end # end of module Swat
 

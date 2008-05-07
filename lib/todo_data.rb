@@ -15,7 +15,7 @@ module Swat
         item_text = <<-EOD
 #{rss_data.items[index].title} : posted #{time_ago(rss_data.items[index].date)} ago
         EOD
-        item = OpenStruct.new(:priority => 2,:flag => true,:text => item_text,:index => index)
+        item = OpenStruct.new(:priority => 2,:flag => true,:text => item_text,:index => index,:link => rss_data.items[index].link)
         @todo_container['trac_ticket'] << item
       end
     end
@@ -128,6 +128,11 @@ module Swat
     def get_priority(category,task_index)
       result = @todo_container[category].detect { |x| x.index == task_index }
       result ? result.priority : 2
+    end
+
+    def get_trac_url task_index
+      result = @todo_container['trac_ticket'].detect { |x| x.index == task_index }
+      result.link
     end
 
     def get_task(category,task_index)

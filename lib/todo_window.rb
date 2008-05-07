@@ -101,7 +101,7 @@ module Swat
       layout_done_view
       layout_trac_view
       @list_view.expand_all
-      #@todo_window.hide
+      @todo_window.hide
     end
 
     # layout statistic bar
