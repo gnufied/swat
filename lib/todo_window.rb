@@ -20,12 +20,20 @@ module Swat
     def on_todo_window_destroy_event; return true; end
 
     def on_add_todo_button_clicked
-      AddTodoDialog.new(@todo_data.categories) do |priority,category,todo|
-        add_to_tasklist(category,todo,priority)
+      AddTodoDialog.new(@todo_data.categories) do |priority,agenda_category,category,todo|
+        chose_and_add(priority,agenda_category,category,todo)
       end
     end
 
-    def add_to_tasklist(category,todo,priority)
+    def chose_and_add(priority,agenda_category,category,todo)
+      if agenda_category == 1
+        @wish_list_tab.add_to_wishlist(category,todo,priority)
+      else
+        add_to_tasklist(priority,category,todo)
+      end
+    end
+
+    def add_to_tasklist(priority,category,todo)
       @todo_data.insert(category,todo,priority.to_i)
       @meta_data.todo_added
       @meta_data.dump
@@ -52,15 +60,29 @@ module Swat
       hide_window if Gdk::Keyval.to_name(key.keyval) =~ /Escape/i
     end
 
+    # should take current tab into account and refresh the view
     def on_reload_button_clicked
-      @todo_data = TodoData.new(@@todo_file_location)
-      reload_view
+      page_number = @todo_notebook.page
+      case page_number
+      when 0
+        @todo_data = TodoData.new(@@todo_file_location)
+        reload_view
+      when 1
+        @wish_list_tab.refresh_data
+      when 2
+        @done_tab.reload_view
+      when 3
+        @trac_tab.refresh_data
+      else
+        puts "Invalid page"
+      end
     end
 
 
     def initialize path
       @glade = GladeXML.new(path) { |handler| method(handler) }
       @list_view = @glade.get_widget("todo_view")
+      @todo_notebook = @glade.get_widget("todo_notebook")
       @todo_window = @glade.get_widget("todo_window")
       window_icon = Gdk::Pixbuf.new("#{SWAT_APP}/resources/todo.png")
       @todo_window.icon_list = [window_icon]
@@ -77,8 +99,9 @@ module Swat
       connect_custom_signals
       layout_wishlist
       layout_done_view
+      layout_trac_view
       @list_view.expand_all
-      @todo_window.hide
+      #@todo_window.hide
     end
 
     # layout statistic bar
@@ -103,10 +126,16 @@ module Swat
       @done_tab = CompletedView.new(done_view,self)
     end
 
+    # will layout trac view
+    def layout_trac_view
+      trac_view = @glade.get_widget("trac_view")
+      @trac_tab = TracView.new(trac_view,self)
+    end
+
     def connect_custom_signals
       @todo_context_menu = TodoContextMenu.new
       @todo_context_menu.append(" Mark As Done ") { mark_as_done }
-      @todo_context_menu.append(" Mark As Wishlist ") { mark_as_wishlist }
+      @todo_context_menu.append(" Add back to Open Tasks ") { mark_as_wishlist }
       @todo_context_menu.show
 
       @list_view.signal_connect("button_press_event") do |widget,event|

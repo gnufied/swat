@@ -4,7 +4,35 @@ module Swat
     def initialize(config_file)
       @config_file = config_file
       @todo_container = {}
-      parse_file_data if File.exist?(@config_file)
+      parse_file_data if @config_file && File.exist?(@config_file)
+    end
+
+    def load_rss_data rss_data
+      @todo_container['trac_ticket'] = []
+      item_count = rss_data.items.size
+      item_count.times do |index|
+        #item_text = rss_data.items[index].title + " : <a href=\"" + rss_data.items[index].link
+        item_text = <<-EOD
+#{rss_data.items[index].title} : posted #{time_ago(rss_data.items[index].date)} ago
+        EOD
+        item = OpenStruct.new(:priority => 2,:flag => true,:text => item_text,:index => index)
+        @todo_container['trac_ticket'] << item
+      end
+    end
+
+    def time_ago date
+      day_diff = ((Time.now - date)/(24*3600)).floor
+      return "#{day_diff.floor} days" if day_diff > 1
+      hour_diff = nil
+      min_diff = nil
+      if day_diff < 1
+        hour_diff = ((Time.now - date)/3600).abs
+        return "#{hour_diff.floor} hours" if hour_diff > 1
+      end
+      if hour_diff && hour_diff < 1
+        min_diff = ((Time.now - date)/60).abs
+      end
+      return "#{min_diff.floor} minutes"
     end
 
     # will read the relevant todo data file and load the todo list
@@ -59,6 +87,7 @@ module Swat
 
     # will dump the todo data in memory to a file
     def dump
+      return unless @config_file
       File.open(@config_file,'w') do |fl|
         @todo_container.each do |category,todo_array|
           fl << "* #{category}\n"
@@ -69,12 +98,14 @@ module Swat
       end
     end
 
+    # will return priority of the task
     def priority_star(count)
       foo = ''
       count.times { foo << '*'}
       return foo
     end
 
+    # will delete the task from internal memory respresentation
     def delete(category,task_index)
       @todo_container[category].each do |task_item|
         if task_item.index == task_index
@@ -87,10 +118,12 @@ module Swat
       @todo_container[category].delete_if { |x| x.index == task_index }
     end
 
+    # will return the available categories
     def categories
       return @todo_container.keys
     end
 
+    # will insert new task
     def insert(category,task,priority)
       @todo_container[category] ||= []
       last_task = @todo_container[category].last

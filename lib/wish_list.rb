@@ -18,8 +18,8 @@ module Swat
 
     def connect_custom_signals
       @wish_context_menu = TodoContextMenu.new
-      @wish_context_menu.append(" Remove Wish ") { remove_wish }
-      @wish_context_menu.append(" Add to Active ") { add_to_active }
+      @wish_context_menu.append(" Remove Task ") { remove_wish }
+      @wish_context_menu.append(" Add to Today\'s Agenda ") { add_to_active }
       @wish_context_menu.show
       @list_view.signal_connect("button_press_event") do |widget,event|
         if event.kind_of? Gdk::EventButton and event.button == 3
@@ -27,6 +27,11 @@ module Swat
         end
       end
       @list_view.signal_connect("popup_menu") { @wish_context_menu.todo_menu.popup(nil, nil, 0, Gdk::Event::CURRENT_TIME) }
+    end
+
+    def refresh_data
+      @todo_data = TodoData.new(@wish_list_file)
+      reload_view
     end
 
     def remove_wish
@@ -47,7 +52,8 @@ module Swat
         task_index = iter[3]
         priority = todo_data.get_priority(selected_category,task_index)
         task_text = todo_data.get_task(selected_category,task_index)
-        @parent_view.add_to_tasklist(selected_category,task_text,priority)
+        #@parent_view.add_to_tasklist(selected_category,task_text,priority)
+        @parent_view.add_to_tasklist(priority,selected_category,task_text)
         todo_data.remove(selected_category,task_index)
         todo_data.dump
         @list_view.model.remove(iter)

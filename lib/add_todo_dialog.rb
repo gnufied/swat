@@ -27,7 +27,7 @@ module Swat
     end
 
     def on_add_todo_button_activate
-      @add_callback.call(@priority_combo.active_text,@category_combo.child.text,@todo_text_entry.buffer.text)
+      @add_callback.call(@priority_combo.active_text,@agenda_category_combo.active,@category_combo.child.text,@todo_text_entry.buffer.text)
       @add_dialog.destroy
     end
 

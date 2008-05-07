@@ -1,235 +1,383 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.2 on Tue May  6 13:13:53 2008 -->
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+
 <glade-interface>
-  <widget class="GtkWindow" id="todo_window">
-    <property name="visible">True</property>
-    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-    <property name="default_width">800</property>
-    <property name="default_height">700</property>
-    <property name="opacity">0.95999997854232788</property>
-    <signal name="key_press_event" handler="on_todo_window_key_press_event"/>
-    <signal name="delete_event" handler="on_todo_window_delete_event"/>
-    <signal name="destroy_event" handler="on_todo_window_destroy_event"/>
-    <child>
-      <widget class="GtkVBox" id="vbox1">
-        <property name="visible">True</property>
-        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-        <child>
-          <widget class="GtkToolbar" id="todo_toolbar">
-            <property name="visible">True</property>
-            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-            <property name="toolbar_style">GTK_TOOLBAR_ICONS</property>
-            <property name="icon_size">GTK_ICON_SIZE_BUTTON</property>
-            <property name="icon_size_set">True</property>
-            <child>
-              <widget class="GtkToolButton" id="sync_button">
-                <property name="visible">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">Sync</property>
-                <property name="use_underline">True</property>
-                <property name="stock_id">gtk-apply</property>
-                <signal name="clicked" handler="on_sync_button_clicked"/>
-                <accelerator key="s" modifiers="GDK_MOD1_MASK" signal="clicked"/>
-              </widget>
-              <packing>
-                <property name="expand">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkToolButton" id="reload_button">
-                <property name="visible">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">Reload</property>
-                <property name="stock_id">gtk-refresh</property>
-                <signal name="clicked" handler="on_reload_button_clicked"/>
-                <accelerator key="r" modifiers="GDK_MOD1_MASK" signal="clicked"/>
-              </widget>
-              <packing>
-                <property name="expand">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkToolButton" id="add_todo_button">
-                <property name="visible">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">Add</property>
-                <property name="stock_id">gtk-add</property>
-                <signal name="clicked" handler="on_add_todo_button_clicked"/>
-                <accelerator key="n" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
-              </widget>
-              <packing>
-                <property name="expand">False</property>
-              </packing>
-            </child>
-          </widget>
-          <packing>
-            <property name="expand">False</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkNotebook" id="notebook1">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-            <child>
-              <widget class="GtkHBox" id="hbox1">
-                <property name="visible">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <child>
-                  <widget class="GtkScrolledWindow" id="scrolledwindow1">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                    <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                    <child>
-                      <widget class="GtkTreeView" id="todo_view">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="headers_clickable">True</property>
-                      </widget>
-                    </child>
-                  </widget>
-                </child>
-                <child>
-                  <widget class="GtkHBox" id="stat_box">
-                    <property name="visible">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <child>
-                      <widget class="GtkButton" id="toggle_stat_button">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="use_stock">True</property>
-                        <property name="response_id">0</property>
-                        <signal name="clicked" handler="on_toggle_stat_button_clicked"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                  </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </widget>
-            </child>
-            <child>
-              <widget class="GtkLabel" id="active_task_label">
-                <property name="visible">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">Today's Agenda</property>
-              </widget>
-              <packing>
-                <property name="type">tab</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkScrolledWindow" id="scrolledwindow2">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                <child>
-                  <widget class="GtkTreeView" id="wish_list_view">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="headers_clickable">True</property>
-                  </widget>
-                </child>
-              </widget>
-              <packing>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkLabel" id="wish_list_label">
-                <property name="visible">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">Open Tasks</property>
-              </widget>
-              <packing>
-                <property name="type">tab</property>
-                <property name="position">1</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkScrolledWindow" id="scrolledwindow3">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                <child>
-                  <widget class="GtkTreeView" id="done_view">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="headers_clickable">True</property>
-                  </widget>
-                </child>
-              </widget>
-              <packing>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkLabel" id="done_task_label">
-                <property name="visible">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">Completed Tasks</property>
-              </widget>
-              <packing>
-                <property name="type">tab</property>
-                <property name="position">2</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkScrolledWindow" id="scrolledwindow4">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                <child>
-                  <widget class="GtkTreeView" id="trac_view">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="headers_clickable">True</property>
-                  </widget>
-                </child>
-              </widget>
-              <packing>
-                <property name="position">3</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkLabel" id="label1">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Trac Tickets</property>
-              </widget>
-              <packing>
-                <property name="type">tab</property>
-                <property name="position">3</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-          </widget>
-          <packing>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </widget>
-    </child>
-  </widget>
+
+<widget class="GtkWindow" id="todo_window">
+  <property name="visible">True</property>
+  <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+  <property name="title" translatable="yes"></property>
+  <property name="type">GTK_WINDOW_TOPLEVEL</property>
+  <property name="window_position">GTK_WIN_POS_NONE</property>
+  <property name="modal">False</property>
+  <property name="default_width">800</property>
+  <property name="default_height">700</property>
+  <property name="resizable">True</property>
+  <property name="destroy_with_parent">False</property>
+  <property name="decorated">True</property>
+  <property name="skip_taskbar_hint">False</property>
+  <property name="skip_pager_hint">False</property>
+  <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
+  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
+  <property name="focus_on_map">True</property>
+  <property name="urgency_hint">False</property>
+  <signal name="key_press_event" handler="on_todo_window_key_press_event"/>
+  <signal name="delete_event" handler="on_todo_window_delete_event"/>
+  <signal name="destroy_event" handler="on_todo_window_destroy_event"/>
+
+  <child>
+    <widget class="GtkVBox" id="vbox1">
+      <property name="visible">True</property>
+      <property name="homogeneous">False</property>
+      <property name="spacing">0</property>
+
+      <child>
+	<widget class="GtkToolbar" id="todo_toolbar">
+	  <property name="visible">True</property>
+	  <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+	  <property name="toolbar_style">GTK_TOOLBAR_ICONS</property>
+	  <property name="tooltips">True</property>
+	  <property name="show_arrow">True</property>
+
+	  <child>
+	    <widget class="GtkToolButton" id="sync_button">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Sync</property>
+	      <property name="use_underline">True</property>
+	      <property name="stock_id">gtk-apply</property>
+	      <property name="visible_horizontal">True</property>
+	      <property name="visible_vertical">True</property>
+	      <property name="is_important">False</property>
+	      <signal name="clicked" handler="on_sync_button_clicked"/>
+	      <accelerator key="s" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+	    </widget>
+	    <packing>
+	      <property name="expand">False</property>
+	      <property name="homogeneous">True</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkToolButton" id="reload_button">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Reload</property>
+	      <property name="use_underline">True</property>
+	      <property name="stock_id">gtk-refresh</property>
+	      <property name="visible_horizontal">True</property>
+	      <property name="visible_vertical">True</property>
+	      <property name="is_important">False</property>
+	      <signal name="clicked" handler="on_reload_button_clicked"/>
+	      <accelerator key="r" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+	    </widget>
+	    <packing>
+	      <property name="expand">False</property>
+	      <property name="homogeneous">True</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkToolButton" id="add_todo_button">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Add</property>
+	      <property name="use_underline">True</property>
+	      <property name="stock_id">gtk-add</property>
+	      <property name="visible_horizontal">True</property>
+	      <property name="visible_vertical">True</property>
+	      <property name="is_important">False</property>
+	      <signal name="clicked" handler="on_add_todo_button_clicked"/>
+	      <accelerator key="n" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
+	    </widget>
+	    <packing>
+	      <property name="expand">False</property>
+	      <property name="homogeneous">True</property>
+	    </packing>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="padding">0</property>
+	  <property name="expand">False</property>
+	  <property name="fill">True</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkNotebook" id="todo_notebook">
+	  <property name="visible">True</property>
+	  <property name="can_focus">True</property>
+	  <property name="show_tabs">True</property>
+	  <property name="show_border">True</property>
+	  <property name="tab_pos">GTK_POS_TOP</property>
+	  <property name="scrollable">False</property>
+	  <property name="enable_popup">False</property>
+
+	  <child>
+	    <widget class="GtkHBox" id="hbox1">
+	      <property name="visible">True</property>
+	      <property name="homogeneous">False</property>
+	      <property name="spacing">0</property>
+
+	      <child>
+		<widget class="GtkScrolledWindow" id="scrolledwindow1">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+		  <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+		  <property name="shadow_type">GTK_SHADOW_NONE</property>
+		  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+
+		  <child>
+		    <widget class="GtkTreeView" id="todo_view">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+		      <property name="headers_visible">True</property>
+		      <property name="rules_hint">False</property>
+		      <property name="reorderable">False</property>
+		      <property name="enable_search">True</property>
+		      <property name="fixed_height_mode">False</property>
+		      <property name="hover_selection">False</property>
+		      <property name="hover_expand">False</property>
+		    </widget>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">True</property>
+		  <property name="fill">True</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkHBox" id="stat_box">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkButton" id="toggle_stat_button">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_toggle_stat_button_clicked"/>
+
+		      <child>
+			<placeholder/>
+		      </child>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">False</property>
+		  <property name="fill">False</property>
+		</packing>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="tab_expand">False</property>
+	      <property name="tab_fill">True</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkLabel" id="active_task_label">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Today's Agenda</property>
+	      <property name="use_underline">False</property>
+	      <property name="use_markup">False</property>
+	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+	      <property name="wrap">False</property>
+	      <property name="selectable">False</property>
+	      <property name="xalign">0.5</property>
+	      <property name="yalign">0.5</property>
+	      <property name="xpad">0</property>
+	      <property name="ypad">0</property>
+	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+	      <property name="width_chars">-1</property>
+	      <property name="single_line_mode">False</property>
+	      <property name="angle">0</property>
+	    </widget>
+	    <packing>
+	      <property name="type">tab</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkScrolledWindow" id="scrolledwindow2">
+	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+	      <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+	      <property name="shadow_type">GTK_SHADOW_NONE</property>
+	      <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+
+	      <child>
+		<widget class="GtkTreeView" id="wish_list_view">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+		  <property name="headers_visible">True</property>
+		  <property name="rules_hint">False</property>
+		  <property name="reorderable">False</property>
+		  <property name="enable_search">True</property>
+		  <property name="fixed_height_mode">False</property>
+		  <property name="hover_selection">False</property>
+		  <property name="hover_expand">False</property>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="tab_expand">False</property>
+	      <property name="tab_fill">True</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkLabel" id="wish_list_label">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Open Tasks</property>
+	      <property name="use_underline">False</property>
+	      <property name="use_markup">False</property>
+	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+	      <property name="wrap">False</property>
+	      <property name="selectable">False</property>
+	      <property name="xalign">0.5</property>
+	      <property name="yalign">0.5</property>
+	      <property name="xpad">0</property>
+	      <property name="ypad">0</property>
+	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+	      <property name="width_chars">-1</property>
+	      <property name="single_line_mode">False</property>
+	      <property name="angle">0</property>
+	    </widget>
+	    <packing>
+	      <property name="type">tab</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkScrolledWindow" id="scrolledwindow3">
+	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+	      <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+	      <property name="shadow_type">GTK_SHADOW_NONE</property>
+	      <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+
+	      <child>
+		<widget class="GtkTreeView" id="done_view">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+		  <property name="headers_visible">True</property>
+		  <property name="rules_hint">False</property>
+		  <property name="reorderable">False</property>
+		  <property name="enable_search">True</property>
+		  <property name="fixed_height_mode">False</property>
+		  <property name="hover_selection">False</property>
+		  <property name="hover_expand">False</property>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="tab_expand">False</property>
+	      <property name="tab_fill">True</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkLabel" id="done_task_label">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Completed Tasks</property>
+	      <property name="use_underline">False</property>
+	      <property name="use_markup">False</property>
+	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+	      <property name="wrap">False</property>
+	      <property name="selectable">False</property>
+	      <property name="xalign">0.5</property>
+	      <property name="yalign">0.5</property>
+	      <property name="xpad">0</property>
+	      <property name="ypad">0</property>
+	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+	      <property name="width_chars">-1</property>
+	      <property name="single_line_mode">False</property>
+	      <property name="angle">0</property>
+	    </widget>
+	    <packing>
+	      <property name="type">tab</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkScrolledWindow" id="scrolledwindow4">
+	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+	      <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+	      <property name="shadow_type">GTK_SHADOW_NONE</property>
+	      <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+
+	      <child>
+		<widget class="GtkTreeView" id="trac_view">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="headers_visible">True</property>
+		  <property name="rules_hint">False</property>
+		  <property name="reorderable">False</property>
+		  <property name="enable_search">True</property>
+		  <property name="fixed_height_mode">False</property>
+		  <property name="hover_selection">False</property>
+		  <property name="hover_expand">False</property>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="tab_expand">False</property>
+	      <property name="tab_fill">True</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkLabel" id="label1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Trac Tickets</property>
+	      <property name="use_underline">False</property>
+	      <property name="use_markup">False</property>
+	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+	      <property name="wrap">False</property>
+	      <property name="selectable">False</property>
+	      <property name="xalign">0.5</property>
+	      <property name="yalign">0.5</property>
+	      <property name="xpad">0</property>
+	      <property name="ypad">0</property>
+	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+	      <property name="width_chars">-1</property>
+	      <property name="single_line_mode">False</property>
+	      <property name="angle">0</property>
+	    </widget>
+	    <packing>
+	      <property name="type">tab</property>
+	    </packing>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="padding">0</property>
+	  <property name="expand">True</property>
+	  <property name="fill">True</property>
+	</packing>
+      </child>
+    </widget>
+  </child>
+</widget>
+
 </glade-interface>
