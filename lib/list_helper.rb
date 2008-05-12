@@ -14,7 +14,7 @@ module Swat
       @list_view.rules_hint = false
       @list_view.selection.mode = Gtk::SELECTION_SINGLE
     end
-    
+
     def add_columns
       model = @list_view.model
       renderer = Gtk::CellRendererText.new
@@ -52,15 +52,18 @@ module Swat
     end
 
     def wrap_line(line)
-      line_array = []
-      loop do
-        first,last = line.unpack("a90a*")
-        first << "-" if last =~ /^\w/
-        line_array << first
-        break if last.empty?
-        line = last
-      end
-      return line_array.join("\n")
+      #line_array = []
+#       loop do
+#         first,last = line.unpack("a90a*")
+#         first << "-" if last =~ /^\w/
+#         line_array << first
+#         break if last.empty?
+#         line = last
+#       end
+      retval = []
+      line.split(/\s+/).each_slice(18) { |x| retval << x.join(' ') }
+      return retval.join("\n")
+      #return line_array.join("\n")
     end
 
     def chose_color(todo_item)
