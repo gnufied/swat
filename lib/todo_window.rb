@@ -130,12 +130,12 @@ module Swat
       @done_tab = CompletedView.new(done_view,self)
     end
 
-    # will layout trac view
-    # commenting this out because it won't work while starting
-    # def layout_trac_view
-    #       trac_view = @glade.get_widget("trac_view")
-    #       @trac_tab = TracView.new(trac_view,self)
-    #     end
+    #will layout trac view
+    #commenting this out because it won't work while starting
+    def layout_trac_view
+      trac_view = @glade.get_widget("trac_view")
+      @trac_tab = TracView.new(trac_view,self)
+    end
 
     def connect_custom_signals
       @todo_context_menu = TodoContextMenu.new

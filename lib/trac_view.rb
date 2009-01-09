@@ -25,9 +25,15 @@ module Swat
       @trac_username = @config_file['trac_username']
       @trac_password = @config_file['trac_password']
       @rss_content = nil
-      open(@feed_url,:http_basic_authentication => [@trac_username,@trac_password]) { |s| @rss_content = s.read }
-      rss = RSS::Parser.parse(@rss_content,false)
-      return rss
+      begin
+        open(@feed_url,:http_basic_authentication => [@trac_username,@trac_password]) { |s| @rss_content = s.read }
+        rss = RSS::Parser.parse(@rss_content,false)
+        return rss
+      rescue Timeout::Error => e
+        return nil
+      rescue
+        return nil
+      end
     end
 
     def refresh_data

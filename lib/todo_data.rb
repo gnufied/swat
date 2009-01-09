@@ -9,14 +9,17 @@ module Swat
 
     def load_rss_data rss_data
       @todo_container['trac_ticket'] = []
-      item_count = rss_data.items.size
-      item_count.times do |index|
-        #item_text = rss_data.items[index].title + " : <a href=\"" + rss_data.items[index].link
-        item_text = <<-EOD
+      if rss_data
+        item_count = rss_data.items.size
+        item_count.times do |index|
+          #item_text = rss_data.items[index].title + " : <a href=\"" + rss_data.items[index].link
+          item_text = <<-EOD
 #{rss_data.items[index].title} : posted #{time_ago(rss_data.items[index].date)} ago
         EOD
-        item = OpenStruct.new(:priority => 2,:flag => true,:text => item_text,:index => index,:link => rss_data.items[index].link)
-        @todo_container['trac_ticket'] << item
+          item = OpenStruct.new(:priority => 2,:flag => true,:text => item_text,:index => index,:link => rss_data.items[index].link)
+          @todo_container['trac_ticket'] << item
+        end
+
       end
     end
 
