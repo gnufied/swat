@@ -22,10 +22,21 @@ module Swat
     def draw(cr)
       cr.set_line_width(0.02)
 
-      cr.set_line_cap(Cairo::LINE_CAP_BUTT) # default
-      cr.move_to(0.5, 0.2)
-      cr.line_to(0.8, 0.2)
-      cr.stroke
+      #cr.set_line_cap(Cairo::LINE_CAP_BUTT) # default
+      #cr.
+      cr.move_to(0.02, 0.02)
+      #cr.line_to(0.05, 0.01)
+      cr.set_source_rgb(0,0.4,0.5)
+      cr.rectangle(0.02, 0.02, 0.4, 0.02)
+      cr.fill
+
+#       cr.select_font_face("Sans",Cairo::FONT_SLANT_NORMAL,
+#                           Cairo::FONT_WEIGHT_NORMAL)
+      cr.set_font_size(0.02)
+      cr.move_to(0.02,0.06)
+      cr.set_source_rgb(0,0,0)
+      cr.show_text("hello world")
+      cr.fill
 
 #       cr.set_line_cap(Cairo::LINE_CAP_ROUND)
 #       cr.move_to(0.5, 0.2)
