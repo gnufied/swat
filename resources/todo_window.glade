@@ -104,11 +104,31 @@
                               </widget>
                             </child>
                             <child>
-                              <widget class="GtkHBox" id="tracker_hbox">
-                                <property name="height_request">204</property>
+                              <widget class="GtkFrame" id="tracker_stats_frame">
+                                <property name="height_request">245</property>
                                 <property name="visible">True</property>
+                                <property name="label_xalign">0.039999999105930328</property>
+                                <property name="shadow_type">GTK_SHADOW_OUT</property>
                                 <child>
-                                  <placeholder/>
+                                  <widget class="GtkAlignment" id="alignment1">
+                                    <property name="visible">True</property>
+                                    <property name="left_padding">12</property>
+                                    <child>
+                                      <widget class="GtkDrawingArea" id="stats_draw_area">
+                                        <property name="visible">True</property>
+                                      </widget>
+                                    </child>
+                                  </widget>
+                                </child>
+                                <child>
+                                  <widget class="GtkLabel" id="label2">
+                                    <property name="visible">True</property>
+                                    <property name="label" translatable="yes">&lt;b&gt;frame1&lt;/b&gt;</property>
+                                    <property name="use_markup">True</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="type">label_item</property>
+                                  </packing>
                                 </child>
                               </widget>
                               <packing>

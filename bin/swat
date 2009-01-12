@@ -26,6 +26,7 @@ require "add_todo_dialog"
 require "wish_list"
 require "completed_view"
 require "trac_view"
+require "tracker_stats"
 require "swat"
 
 Swat::SwatMain.new

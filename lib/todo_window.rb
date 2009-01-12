@@ -106,23 +106,30 @@ module Swat
       connect_custom_signals
       layout_wishlist
       layout_done_view
-      layout_trac_view
+      #layout_trac_view
+      layout_tracker_stats
       @list_view.expand_all
       @status = false
-      @todo_window.hide
+      # @todo_window.hide
     end
 
     # layout statistic bar
-    # def layout_statbar
-#       @stat_toggle_button = @glade.get_widget("toggle_stat_button")
-#       @stat_hbox = @glade.get_widget("stat_box")
-#       @stat_vbox = StatBox.new(@meta_data)
+    def layout_statbar
+      @stat_toggle_button = @glade.get_widget("toggle_stat_button")
+      @stat_hbox = @glade.get_widget("stat_box")
+      @stat_vbox = StatBox.new(@meta_data)
 
-#       @stat_hbox.pack_end(@stat_vbox.vbox_container,true)
-#       button_icon_widget = Gtk::Image.new("#{SWAT_APP}/resources/control_rewind_blue.png")
-#       @stat_box_status = false
-#       @stat_toggle_button.image = button_icon_widget
-#     end
+      @stat_hbox.pack_end(@stat_vbox.vbox_container,true)
+      button_icon_widget = Gtk::Image.new("#{SWAT_APP}/resources/control_rewind_blue.png")
+      @stat_box_status = false
+      @stat_toggle_button.image = button_icon_widget
+    end
+
+    def layout_tracker_stats
+      tracker_hbox = @glade.get_widget("tracker_stats_frame")
+      drawing_area = @glade.get_widget("stats_draw_area")
+      @tracker_statbox = TrackerStatBox.new(tracker_hbox,drawing_area)
+    end
 
     def layout_wishlist
       wish_list_view = @glade.get_widget("wish_list_view")
