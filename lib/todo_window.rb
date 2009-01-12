@@ -81,6 +81,10 @@ module Swat
       end
     end
 
+    def on_settings_button_clicked
+      puts "settings button clicked here"
+    end
+
 
     def initialize path
       @glade = GladeXML.new(path) { |handler| method(handler) }
