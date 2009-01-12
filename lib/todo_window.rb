@@ -94,7 +94,7 @@ module Swat
       @todo_selection.mode = Gtk::SELECTION_SINGLE
 
       @meta_data = SwatMetaData.new(@@meta_data_file)
-      layout_statbar
+      #layout_statbar
       @todo_data = TodoData.new(@@todo_file_location)
       @model = create_model
       load_available_lists
@@ -109,16 +109,16 @@ module Swat
     end
 
     # layout statistic bar
-    def layout_statbar
-      @stat_toggle_button = @glade.get_widget("toggle_stat_button")
-      @stat_hbox = @glade.get_widget("stat_box")
-      @stat_vbox = StatBox.new(@meta_data)
+    # def layout_statbar
+#       @stat_toggle_button = @glade.get_widget("toggle_stat_button")
+#       @stat_hbox = @glade.get_widget("stat_box")
+#       @stat_vbox = StatBox.new(@meta_data)
 
-      @stat_hbox.pack_end(@stat_vbox.vbox_container,true)
-      button_icon_widget = Gtk::Image.new("#{SWAT_APP}/resources/control_rewind_blue.png")
-      @stat_box_status = false
-      @stat_toggle_button.image = button_icon_widget
-    end
+#       @stat_hbox.pack_end(@stat_vbox.vbox_container,true)
+#       button_icon_widget = Gtk::Image.new("#{SWAT_APP}/resources/control_rewind_blue.png")
+#       @stat_box_status = false
+#       @stat_toggle_button.image = button_icon_widget
+#     end
 
     def layout_wishlist
       wish_list_view = @glade.get_widget("wish_list_view")
