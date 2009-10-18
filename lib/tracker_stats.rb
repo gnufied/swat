@@ -1,5 +1,6 @@
 module Swat
   class TrackerStatBox
+    TEXT = "Hello World"
     attr_accessor :drawing_area
     def initialize container_frame,drawing_area
       @container_frame = container_frame
@@ -30,14 +31,20 @@ module Swat
       cr.rectangle(0.02, 0.02, 0.4, 0.02)
       cr.fill
 
-#       cr.select_font_face("Sans",Cairo::FONT_SLANT_NORMAL,
-#                           Cairo::FONT_WEIGHT_NORMAL)
-      cr.set_font_size(0.02)
-      cr.move_to(0.02,0.06)
-      cr.set_source_rgb(0,0,0)
-      cr.show_text("hello world")
-      cr.fill
 
+
+      cr.select_font_face("Sans",
+                          Cairo::FONT_SLANT_NORMAL,
+                          Cairo::FONT_WEIGHT_NORMAL)
+
+      cr.set_font_size(0.04)
+#       extents = cr.text_extents(TEXT)
+#       x = 0.5 - (extents.width / 2 + extents.x_bearing)
+#       y = 0.5 - (extents.height / 2 + extents.y_bearing)
+
+      cr.move_to(0.03, 0.4)
+      cr.show_text(TEXT)
+      cr.stroke
 #       cr.set_line_cap(Cairo::LINE_CAP_ROUND)
 #       cr.move_to(0.5, 0.2)
 #       cr.line_to(0.5, 0.8)
