@@ -10,6 +10,7 @@ Features:
   - All your todos are in a .org file and hence can be managed from
     Emacs as well.
   - System tray integration.
+  - Wow how nice.
 
 KeyBindings:
   - Alt-F11 : from anywhere, brings the todo window to front.
